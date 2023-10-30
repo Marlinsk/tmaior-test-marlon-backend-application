@@ -1,12 +1,8 @@
-# Local backend application
+# Technical test
+Project developed for technical evaluation.
+
+## The objective of this project version
 Backend application developed for practical purposes using **Clean aArchitecture + object-oriented programming paradigm + SOLID principles.** This application is a CRUD developed with **Node.js + TypeScript** without using frameworks with everything pre-built, such as **Nest.js** or **Adonis.js.**
-
-## Objectives
--- Evaluate my technical skills in backend application development in Node.js without a framework.
-
--- Assess knowledge of Docker.
-
--- Create a Docker image and upload it to a Docker Hub repository.
 
 ## Tutorial
 **Note:** To follow the step-by-step instructions for running the application on your machine, you need to have knowledge of terminal commands, Git and GitHub commands, and npm package manager commands, as well as navigating between folders using the terminal.
