@@ -30,22 +30,22 @@ const deletePostController = new DeletePostController(deletePostUseCase);
 
 export const fakeRouter = express.Router();
 
-fakeRouter.post('/', async (response, request) => {
+fakeRouter.post('/posts', async (response, request) => {
   return await createPostController.handle(response, request);
 });
 
-fakeRouter.get('/', async (response, request) => {
+fakeRouter.get('/posts', async (response, request) => {
   return await listAllPostsController.handle(response, request);
 });
 
-fakeRouter.get('/:id', async (response, request) => {
+fakeRouter.get('/posts/:id', async (response, request) => {
   return await findPostByIdController.handle(response, request);
 });
 
-fakeRouter.put('/:id', async (response, request) => {
+fakeRouter.put('/posts/:id', async (response, request) => {
   return await editPostController.handle(response, request);
 });
 
-fakeRouter.delete('/:id', async (response, request) => {
+fakeRouter.delete('/posts/:id', async (response, request) => {
   return await deletePostController.handle(response, request);
 });
