@@ -12,7 +12,7 @@ initialPostData.forEach((data) => {
     title: data.title,
     text: data.text
   });
-  if (fakePostRepository.findAll.length > 0) {
+  if (fakePostRepository.findAll.length <= 0) {
     fakePostRepository.create(post)
   }
 });
