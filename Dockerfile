@@ -1,5 +1,5 @@
-# Use the Node.js image with a specific version (node:19.6.0) as the base image.
-FROM node:19.6.0
+# Use the Node.js image with a specific version (node:20.9.0-alpine3.17) as the base image.
+FROM node:20.9.0-alpine3.17
 
 # Set the working directory inside the container to /app.
 WORKDIR /app
