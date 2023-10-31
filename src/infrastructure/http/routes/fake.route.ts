@@ -4,7 +4,7 @@ import { EditPostUseCase } from "@core/usecases/edit-post-usecase";
 import { FindPostByIdUsecase } from "@core/usecases/find-post-by-id-usecase";
 import { ListAllPostsUseCase } from "@core/usecases/list-all-posts-usecase";
 import { FakePostRepository } from "@infrastructure/data/repositories/fakes/fake-post-repository";
-import express, { request, response, Router } from "express";
+import express from "express";
 import { CreatePostController } from "../controllers/create-post-controller";
 import { DeletePostController } from "../controllers/delete-post-controller";
 import { EditPostController } from "../controllers/edit-post-controller";
@@ -30,22 +30,22 @@ const deletePostController = new DeletePostController(deletePostUseCase);
 
 export const fakeRouter = express.Router();
 
-fakeRouter.post('/posts', async (response, request) => {
+fakeRouter.post("/fake/posts", async (response, request) => {
   return await createPostController.handle(response, request);
 });
 
-fakeRouter.get('/posts', async (response, request) => {
+fakeRouter.get("/fake/posts", async (response, request) => {
   return await listAllPostsController.handle(response, request);
 });
 
-fakeRouter.get('/posts/:id', async (response, request) => {
+fakeRouter.get("/fake/posts/:id", async (response, request) => {
   return await findPostByIdController.handle(response, request);
 });
 
-fakeRouter.put('/posts/:id', async (response, request) => {
+fakeRouter.put("/fake/posts/:id", async (response, request) => {
   return await editPostController.handle(response, request);
 });
 
-fakeRouter.delete('/posts/:id', async (response, request) => {
+fakeRouter.delete("/fake/posts/:id", async (response, request) => {
   return await deletePostController.handle(response, request);
 });

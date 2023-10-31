@@ -7,6 +7,8 @@ export class ListAllPostsController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     const posts = await this.listAllPostsUseCase.execute();
-    return response.status(200).json({ posts: posts.map(PostViewModel.toHttp) });
+    return response
+      .status(200)
+      .json({ posts: posts.map(PostViewModel.toHttp) });
   }
 }

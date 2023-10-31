@@ -41,7 +41,7 @@ Now, you just need to access it using a request tool or consume it; the applicat
 
 **1º step: Inside the project folder, run the following command in the terminal to create the Docker image.**
 ```bash
-docker build -t <IMAGE NAME>:0.1 .
+docker build -t <IMAGE NAME>:1.0.0 .
 ```
 
 **2º step: Run the command in the terminal for list your images**

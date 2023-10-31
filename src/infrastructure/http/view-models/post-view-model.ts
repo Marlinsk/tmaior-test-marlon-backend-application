@@ -7,7 +7,7 @@ export class PostViewModel {
       title: post.title,
       text: post.text,
       createdAt: post.createdAt,
-      updatedAt: post.updatedAt
-    }
+      updatedAt: post.updatedAt,
+    };
   }
 }

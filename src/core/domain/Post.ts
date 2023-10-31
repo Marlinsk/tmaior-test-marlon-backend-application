@@ -7,7 +7,15 @@ export class Post {
   private _createdAt: Date;
   private _updatedAt: Date;
 
-  constructor({ id, title, text }: { id?: string; title: string; text: string }) {
+  constructor({
+    id,
+    title,
+    text,
+  }: {
+    id?: string;
+    title: string;
+    text: string;
+  }) {
     this._id = id ?? randomUUID();
     this._title = title;
     this._text = text;

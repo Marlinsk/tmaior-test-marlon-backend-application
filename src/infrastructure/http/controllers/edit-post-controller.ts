@@ -7,7 +7,7 @@ export class EditPostController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const { title, text } = request.body;
-    const post = await this.editPostUseCase.execute({ id, title, text })
+    const post = await this.editPostUseCase.execute({ id, title, text });
     return response.status(200).json(post);
   }
 }

@@ -5,7 +5,7 @@ FROM node:20.9.0-alpine3.17
 WORKDIR /app
 
 # Set the working directory inside the container to /app.
-COPY ["package.json", "package-lock.json", "./"] 
+COPY ["package.json", "./"] 
 
 # Set the working directory inside the container to /app.
 RUN npm install
