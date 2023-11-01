@@ -10,18 +10,19 @@ on:
       - completed
     
 jobs:
-  runs-on: self-hosted
 
-  steps:
-    - name: Stop container
-      run: sudo docker compose stop
-    
-    - name: Remove container
-      run: sudo docker compose down
+  build: 
+    runs-on: self-hosted
+    steps:
+      - name: Stop container
+        run: sudo docker compose stop
+      
+      - name: Remove container
+        run: sudo docker compose down
 
-    - name: Remove Image
-      run: sudo docker rmi marlonrodris/node-simple-backend-application
+      - name: Remove Image
+        run: sudo docker rmi marlonrodris/node-simple-backend-application
 
-    - name: Create new container
-      run: sudo docker compose up
+      - name: Create new container
+        run: sudo docker compose up
 
