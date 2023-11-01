@@ -45,7 +45,7 @@ jobs:
         run: echo "Build Complete"    
 
   deploy-production:
-    needs: test-ci
+    needs: test-cli
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-20.04
     concurrency: deploy-to-production
@@ -55,11 +55,14 @@ jobs:
         env:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-      - name: Build and push the Docker image
-        run: docker build -t marlonrodris/node-simple-backend-application:$(data +%s) .
-        run: docker tag node-simple-backend-app:$(data +%s) marlonrodris/node-simple-backend-application:latest
+      - name: Build the Docker image
+        run: docker build -t marlonrodris/node-simple-backend-application:$(date +%s) .
+
+      - name: Tag the Docker image
+        run: docker tag marlonrodris/node-simple-backend-application:$(date +%s) marlonrodris/node-simple-backend-application:latest
 
       - name: Push the latest version of the Docker image to Docker Hub
         run: docker push marlonrodris/node-simple-backend-application:latest
