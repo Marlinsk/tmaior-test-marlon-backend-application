@@ -44,7 +44,7 @@ jobs:
       - name: "Feedback of the test"
         run: echo "Build Complete"    
 
-  deploy-production:
+  building:
     needs: test-cli
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-20.04
@@ -69,8 +69,8 @@ jobs:
       - name: Push the latest version of the Docker image to Docker Hub
         run: docker push marlonrodris/node-simple-backend-application:latest
 
-  build:
-    needs: deploy-production
+  deploy-production:
+    needs: building
     runs-on: self-hosted
     steps:
     - name: Pull Docker image
