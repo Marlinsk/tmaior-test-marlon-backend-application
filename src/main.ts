@@ -4,7 +4,7 @@ import { initialFakeDataPost } from "@infrastructure/data/mocks/FakeDataPost";
 import {
   fakePostRepository,
   fakeRouter,
-} from "@infrastructure/http/routes/fake.route";
+} from "@infrastructure/http/routes/route";
 import cors from "cors";
 import express, { NextFunction, Request, Response, json } from "express";
 import "express-async-errors";

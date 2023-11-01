@@ -2,7 +2,7 @@
 Project developed for technical evaluation.
 
 ## The objective of this project version
-Backend application developed for practical purposes using **Clean aArchitecture + object-oriented programming paradigm + SOLID principles.** This application is a CRUD developed with **Node.js + TypeScript** without using frameworks with everything pre-built, such as **Nest.js** or **Adonis.js.**
+Backend application developed for practical purposes using **Clean aArchitecture + object-oriented programming paradigm + SOLID principles.** This application is a CRUD developed with **Node.js + TypeScript**. 
 
 ## Tutorial
 **Note:** To follow the step-by-step instructions for running the application on your machine, you need to have knowledge of terminal commands, Git and GitHub commands, and npm package manager commands, as well as navigating between folders using the terminal.
@@ -52,7 +52,7 @@ After that, look for the **IMAGE ID** of your image name and copy it.
 
 **3º step: With the IMAGE ID of your Docker image copied, use it in the following command.**
 ```bash
-docker run <IMAGE ID>
+docker run <IMAGE NAME OR ID>
 ```
 Now, you have an application running in a Docker container. You just need to access it using a request tool or consume it; the application is running on **localhost:5000.**
 
@@ -64,18 +64,18 @@ docker ps
 
 To stop a specific container
 ```bash
-docker stop <CONTAINER ID>
+docker stop <CONTAINER NAME OR ID>
 ```
 **Note:** To stop all running containers, you can simply use **docker stop.**
 
 To remove specific container
 ```bash
-docker rm <CONTAINER ID>
+docker rm <CONTAINER NAME OR ID>
 ```
 
 To remove specific image
 ```bash
-docker rmi <IMAGE ID>
+docker rmi <IMAGE NAME OR ID>
 ```
 
 ## Application Routes
