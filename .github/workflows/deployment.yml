@@ -1,7 +1,7 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   workflow_dispatch:
@@ -64,13 +64,20 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build the Docker image
-        run: docker build -t marlonrodris/node-simple-backend-application:1.0.0 .
-
-      - name: Tag the Docker image
-        run: docker tag marlonrodris/node-simple-backend-application:1.0.0 marlonrodris/node-simple-backend-application:latest
-
-      - name: Push the version of the Docker image to Docker Hub
-        run: docker push marlonrodris/node-simple-backend-application:1.0.0
+        run: docker build -t marlonrodris/node-simple-backend-application .
 
       - name: Push the latest version of the Docker image to Docker Hub
         run: docker push marlonrodris/node-simple-backend-application:latest
+
+  build:
+    needs: deploy-production
+    runs-on: self-hosted
+    steps:
+    - name: Pull Docker image
+      run: sudo docker pull marlonrodris/node-simple-backend-application:latest
+    
+    - name: Delete Old docker container
+      run: sudo docker rm -f backendapp-container || true
+
+    - name: Run Docker Container
+      run: sudo docker run -d -p 5000:5000 --name backendapp-container marlonrodris/node-simple-backend-application
