@@ -2,7 +2,7 @@
 Project developed for technical evaluation.
 
 ## The objective of this project version
-Backend application developed for practical purposes using **Clean aArchitecture + object-oriented programming paradigm + SOLID principles.** This application is a CRUD developed with **Node.js + TypeScript** without using frameworks with everything pre-built, such as **Nest.js** or **Adonis.js.**
+Backend application developed for practical purposes using **Clean aArchitecture + object-oriented programming paradigm + SOLID principles.** This application is a CRUD developed with **Node.js + TypeScript**. 
 
 ## Tutorial
 **Note:** To follow the step-by-step instructions for running the application on your machine, you need to have knowledge of terminal commands, Git and GitHub commands, and npm package manager commands, as well as navigating between folders using the terminal.
@@ -93,19 +93,19 @@ Create a post.
 }
 ```
 
-> /posts
+> /fake/posts
 
 **GET** Find post by ID:
 
 Get the post by ID specified.
 
-> /posts/:id
+> /fake/posts/:id
 
 **GET** Find all posts:
 
 List all posts
 
-> /posts
+> /fake/posts
 
 **PUT** Update post:
 
@@ -119,10 +119,10 @@ Update post by specified ID
 }
 ```
 
-> /posts/:id
+> /fake/posts/:id
 
 **DELETE** Remove post:
 
 Remove post by specified ID
 
-> /posts/:id
+> /fake/posts/:id
