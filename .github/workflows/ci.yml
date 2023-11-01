@@ -59,10 +59,10 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build the Docker image
-        run: docker build -t marlonrodris/node-simple-backend-application:$(date +%s) -f ./Dockerfile .
+        run: docker build -t marlonrodris/node-simple-backend-application:latest .
 
       - name: Tag the Docker image
-        run: docker tag marlonrodris/node-simple-backend-application:$(date +%s) marlonrodris/node-simple-backend-application:latest
+        run: docker tag marlonrodris/node-simple-backend-application:latest marlonrodris/node-simple-backend-application:latest
 
       - name: Push the latest version of the Docker image to Docker Hub
         run: docker push marlonrodris/node-simple-backend-application:latest
