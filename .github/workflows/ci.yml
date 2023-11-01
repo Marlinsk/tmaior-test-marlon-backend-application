@@ -68,7 +68,7 @@ jobs:
 
       - name: Tag the Docker image
         run: docker tag marlonrodris/node-simple-backend-application:1.0.0 marlonrodris/node-simple-backend-application:latest
-      
+
       - name: Push the version of the Docker image to Docker Hub
         run: docker push marlonrodris/node-simple-backend-application:1.0.0
 
