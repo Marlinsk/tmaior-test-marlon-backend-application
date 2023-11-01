@@ -33,13 +33,13 @@ jobs:
     environment: test
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 10.x
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
 
       - name: Build and push the Docker image
-        run: docker build -t new-tested-app-image .
+        run: docker build -t new-tested-app-image:1.0.0 .
 
       - name: "Feedback of the test"
         run: echo "Build Complete"    
@@ -52,7 +52,7 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 10.x
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
@@ -64,13 +64,14 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build the Docker image
-        run: docker build -t marlonrodris/node-simple-backend-application:latest .
+        run: docker build -t marlonrodris/node-simple-backend-application:1.0.0 .
 
       - name: Tag the Docker image
-        run: docker tag marlonrodris/node-simple-backend-application:latest marlonrodris/node-simple-backend-application:latest
+        run: docker tag marlonrodris/node-simple-backend-application:1.0.0 marlonrodris/node-simple-backend-application:latest
 
       - name: Push the version of the Docker image to Docker Hub
-        run: docker push marlonrodris/node-simple-backend-application:$(data +%s)
+        run: docker push marlonrodris/node-simple-backend-application:1.0.0
 
       - name: Push the latest version of the Docker image to Docker Hub
         run: docker push marlonrodris/node-simple-backend-application:latest
+
