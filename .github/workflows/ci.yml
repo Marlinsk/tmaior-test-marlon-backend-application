@@ -59,7 +59,7 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build the Docker image
-        run: docker build -t marlonrodris/node-simple-backend-application:$(date +%s) .
+        run: docker build -t marlonrodris/node-simple-backend-application:$(date +%s) -f ./Dockerfile .
 
       - name: Tag the Docker image
         run: docker tag marlonrodris/node-simple-backend-application:$(date +%s) marlonrodris/node-simple-backend-application:latest
