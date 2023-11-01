@@ -93,19 +93,19 @@ Create a post.
 }
 ```
 
-> /fake/posts
+> /posts
 
 **GET** Find post by ID:
 
 Get the post by ID specified.
 
-> /fake/posts/:id
+> /posts/:id
 
 **GET** Find all posts:
 
 List all posts
 
-> /fake/posts
+> /posts
 
 **PUT** Update post:
 
@@ -119,10 +119,10 @@ Update post by specified ID
 }
 ```
 
-> /fake/posts/:id
+> /posts/:id
 
 **DELETE** Remove post:
 
 Remove post by specified ID
 
-> /fake/posts/:id
+> /posts/:id
