@@ -68,23 +68,10 @@ jobs:
       - name: Push the latest version of the Docker image to Docker Hub
         run: docker push marlonrodris/node-simple-backend-application:latest
 
-  delivery-test:
+  delivery:
     needs: deploy-production
     if: github.ref == 'refs/heads/main'
-    runs-on: nodejs-1
-    concurrency: testing-connection-with-delivery
-    steps:
-      - uses: actions/checkout@v3
-      - name: Access test
-        run: sudo echo "Hello World!"
-
-      - name: Executing a docker command 
-        run: sudo docker info
-
-  delivery:
-    needs: delivery-test
-    if: github.ref == 'refs/heads/main'
-    runs-on: nodejs-1
+    runs-on: self-hosted
     concurrency: delivery
     steps:
       - uses: actions/checkout@v3
