@@ -69,10 +69,10 @@ jobs:
         run: docker push marlonrodris/node-simple-backend-application:latest
 
   delivery-test:
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
-    runs-on: self-hosted
+    needs: deploy-production
+    if: github.ref == 'refs/heads/main'
+    runs-on: nodejs-1
     concurrency: testing-connection-with-delivery
-    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
       - name: Access test
@@ -81,13 +81,10 @@ jobs:
       - name: Executing a docker command 
         run: sudo docker info
 
-      - name: Sleep for 15 minutes
-        run: sleep 900
-
   delivery:
     needs: delivery-test
     if: github.ref == 'refs/heads/main'
-    runs-on: self-hosted
+    runs-on: nodejs-1
     concurrency: delivery
     steps:
       - uses: actions/checkout@v3
