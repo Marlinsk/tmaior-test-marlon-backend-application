@@ -1,0 +1,9 @@
+version: '3'
+services:
+  app:
+    container_name: simple-api
+    image: <DOCKER IMAGE NAME>:VERSION
+    ports:
+      - '5000:5000'
+    environment:
+      DATABASE_URL: 'mongodb://USERNAME:PASSWORD@HOST/DATABASE'

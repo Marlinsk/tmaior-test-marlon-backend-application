@@ -5,7 +5,7 @@ FROM node:20.9.0-alpine3.17
 WORKDIR /app
 
 # Set the working directory inside the container to /app.
-COPY ["package.json", "./"] 
+COPY package*.json ./ 
 
 # Set the working directory inside the container to /app.
 RUN npm install
@@ -15,6 +15,9 @@ COPY . .
 
 # Run 'npm run build' to execute any build scripts for the Node.js application (e.g., transpile TypeScript to JavaScript).
 RUN npm run build
+
+# Run Prisma generate during the build process
+RUN npx prisma generate
 
 # Expose port 5000 to the outside world, allowing external access to the application.
 EXPOSE 5000
