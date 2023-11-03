@@ -1,6 +1,6 @@
 import { AppError } from "@common/errors/AppError";
+import { FakePostRepository } from "@infrastructure/database/repositories/implementations/fakes/fake-post-repository";
 import { CreatePostUseCase } from "./create-post-usecase";
-import { FakePostRepository } from "@infrastructure/data/repositories/fakes/fake-post-repository";
 
 let repository: FakePostRepository;
 let createPostUseCase: CreatePostUseCase;
@@ -17,7 +17,7 @@ describe("CreatePostUseCase", () => {
       text: "Post text",
     });
 
-    expect(post).toHaveProperty("id");
+    expect(post).toHaveProperty("_id");
     expect(repository.posts).toHaveLength(1);
     expect(repository.posts[0]).toEqual(post);
   });

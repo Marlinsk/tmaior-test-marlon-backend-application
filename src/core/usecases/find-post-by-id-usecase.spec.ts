@@ -1,7 +1,7 @@
-import { FakePostRepository } from "@infrastructure/data/repositories/fakes/fake-post-repository";
-import { FindPostByIdUsecase } from "./find-post-by-id-usecase";
-import { CreatePostUseCase } from "./create-post-usecase";
 import { AppError } from "@common/errors/AppError";
+import { FakePostRepository } from "@infrastructure/database/repositories/implementations/fakes/fake-post-repository";
+import { CreatePostUseCase } from "./create-post-usecase";
+import { FindPostByIdUsecase } from "./find-post-by-id-usecase";
 
 let repository: FakePostRepository;
 let findPostByIdUsecase: FindPostByIdUsecase;
@@ -23,9 +23,9 @@ describe("FindPostByIdUsecase", () => {
 
     const postFinded = await findPostByIdUsecase.execute("1");
 
-    expect(postFinded.id).toBe("1");
-    expect(postFinded.title).toBe("Post Title");
-    expect(postFinded.text).toBe("Post text");
+    expect(postFinded.getId).toBe("1");
+    expect(postFinded.getTitle).toBe("Post Title");
+    expect(postFinded.getText).toBe("Post text");
   });
 
   it("should not be able to find an non existing product by id", async () => {

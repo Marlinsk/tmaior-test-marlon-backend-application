@@ -1,7 +1,7 @@
 import { AppError } from "@common/errors/AppError";
-import { FakePostRepository } from "@infrastructure/data/repositories/fakes/fake-post-repository";
-import { EditPostUseCase } from "./edit-post-usecase";
+import { FakePostRepository } from "@infrastructure/database/repositories/implementations/fakes/fake-post-repository";
 import { CreatePostUseCase } from "./create-post-usecase";
+import { EditPostUseCase } from "./edit-post-usecase";
 
 let repository: FakePostRepository;
 let editPostUseCase: EditPostUseCase;
@@ -27,8 +27,8 @@ describe("EditPostUseCase", () => {
       text: "Post text edited",
     });
 
-    expect(postUpdated.title).toBe("Post Title edited");
-    expect(postUpdated.text).toBe("Post text edited");
+    expect(postUpdated.getTitle).toBe("Post Title edited");
+    expect(postUpdated.getText).toBe("Post text edited");
   });
 
   it("should not be able to edite an non-existing post", async () => {

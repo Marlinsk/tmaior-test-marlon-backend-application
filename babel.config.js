@@ -16,6 +16,7 @@ module.exports = {
         '@common': './src/common',
         '@core': './src/core',
         '@infrastructure': './src/infrastructure',
+        "@providers": './src/providers'
       }
     }]
   ],
