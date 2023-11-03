@@ -20,7 +20,8 @@
     "paths": {
       "@common/*": ["./src/common/*"], 
       "@core/*": ["./src/core/*"],
-      "@infrastructure/*": ["./src/infrastructure/*"]
+      "@infrastructure/*": ["./src/infrastructure/*"],
+      "@providers/*": ["./src/providers/*"]
     },           
     "strict": true,  
   },

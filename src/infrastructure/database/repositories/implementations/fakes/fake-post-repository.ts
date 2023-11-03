@@ -14,18 +14,18 @@ export class FakePostRepository implements PostRepository {
   }
 
   async findById(id: string): Promise<Post | undefined> {
-    const post = this.posts.find((post) => post.id === id);
+    const post = this.posts.find((post) => post.getId === id);
     return post;
   }
 
   async save(data: Post): Promise<Post> {
-    const findIndex = this.posts.findIndex((post) => post.id === data.id);
+    const findIndex = this.posts.findIndex((post) => post.getId === data.getId);
     this.posts[findIndex] = data;
     return data;
   }
 
   async delete(id: string): Promise<void> {
-    const findIndex = this.posts.findIndex((post) => post.id === id);
+    const findIndex = this.posts.findIndex((post) => post.getId === id);
     this.posts.splice(findIndex, 1);
     return;
   }

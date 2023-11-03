@@ -1,6 +1,6 @@
-import { FakePostRepository } from "@infrastructure/data/repositories/fakes/fake-post-repository";
-import { ListAllPostsUseCase } from "./list-all-posts-usecase";
+import { FakePostRepository } from "@infrastructure/database/repositories/implementations/fakes/fake-post-repository";
 import { CreatePostUseCase } from "./create-post-usecase";
+import { ListAllPostsUseCase } from "./list-all-posts-usecase";
 
 let repository: FakePostRepository;
 let listAllPostsUseCase: ListAllPostsUseCase;

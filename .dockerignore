@@ -1,7 +1,6 @@
 node_modules
 dist
 coverage
-package-lock.json
 
 .github
 .gitignore
@@ -18,3 +17,5 @@ jest.config.ts
 
 README.md
 CHANGELOG.md
+
+docker-compose.yml
