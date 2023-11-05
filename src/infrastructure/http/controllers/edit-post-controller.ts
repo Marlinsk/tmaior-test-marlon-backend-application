@@ -1,6 +1,5 @@
 import { EditPostUseCase } from "@core/usecases/edit-post-usecase";
 import { Request, Response } from "express";
-import { PostViewModel } from "../view-models/post-view-model";
 
 export class EditPostController {
   constructor(private readonly editPostUseCase: EditPostUseCase) {}
@@ -9,6 +8,6 @@ export class EditPostController {
     const { id } = request.params;
     const { title, text } = request.body;
     const post = await this.editPostUseCase.execute({ id, title, text });
-    return response.status(200).json({ post: PostViewModel.toHttp(post) });
+    return response.status(200).json(post);
   }
 }
