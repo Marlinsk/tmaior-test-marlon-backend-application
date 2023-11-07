@@ -68,7 +68,7 @@ After that, look for the **IMAGE ID** of your image name and copy it.
 
 **3º step: Run the command in the terminal for app works.**
 ```bash
-docker run -p 5000:5000 --name app-container backend-app
+docker run -p 5000:5000 --name app-container backend-app:latest
 ```
 
 ### Other docker commands
