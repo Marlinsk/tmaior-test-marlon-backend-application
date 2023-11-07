@@ -1,8 +1,8 @@
-# Technical test
-Project developed for technical evaluation.
+# Technical test TMaior
+Project developed for technical evaluation in the selection process for the Junior DevOps position at TMaior.
 
 ## The objective of this project version
-Backend application developed for practical purposes using **Clean aArchitecture + object-oriented programming paradigm + SOLID principles.** This application is a API Restfull developed with **Node.js + TypeScript + MongoDB ATLAS + Prisma ORM + Docker.** 
+Backend application developed for practical purposes using **Clean aArchitecture + object-oriented programming paradigm + SOLID principles.** This application is a API Restfull developed with **Node.js + TypeScript + MongoDB ATLAS + Prisma ORM + Docker.** For the pipelines I used **Github Actions** for the continuous integration and delivery processes.
 
 ## Tutorial
 **Note:** To follow the step-by-step instructions for running the application on your machine, you need to have knowledge of terminal commands, Git and GitHub commands, and npm package manager commands, as well as navigating between folders using the terminal.
@@ -10,17 +10,17 @@ Backend application developed for practical purposes using **Clean aArchitecture
 ### Cloning and setting up the project
 **1º step: clone the repository to your machine from GitHub.**
 ```bash
-git clone https://github.com/Marlinsk/tmaior-test-marlon.git
+git clone https://github.com/Marlinsk/tmaior-test-marlon-backend-application.git
 ```
 
 **2º step: Navigate to the project folder.**
 ```bash
-cd tmaior-test-marlon
+cd tmaior-test-marlon-backend-application
 ```
 
-**3º step: Create .env file before run npm install in the terminal**
+**3º step: Create .env file before run npm install in the terminal.**
 ```bash
-DATABASE_URL=mongodb://USERNAME:PASSWORD@HOST/DATABASE
+DATABASE_URL=mongodb+srv://USERNAME:PASSWORD@HOST/DATABASE
 ```
 **Note:** After creating the file, insert the credentials to connect to the MongoDB Atlas database. 
 
@@ -57,14 +57,19 @@ Now, you just need to access it using a request tool or consume it; the applicat
 
 **1º step: Inside the project folder, run the following command in the terminal to create the Docker image.**
 ```bash
-docker build -t <DOCKER IMAGE NAME>:1.1.0 .
+docker build -t backend-app:latest .
 ```
 
-**2º step: Run the command in the terminal for list your images**
+**2º step: Run the command in the terminal for list your images.**
 ```bash
 docker images
 ```
 After that, look for the **IMAGE ID** of your image name and copy it.
+
+**3º step: Run the command in the terminal for app works.**
+```bash
+docker run -p 5000:5000 --name app-container backend-app
+```
 
 ### Other docker commands
 Command to list the running containers
@@ -74,22 +79,24 @@ docker ps
 
 To stop a specific container
 ```bash
-docker stop <CONTAINER NAME OR ID>
+docker stop app-container
 ```
 **Note:** To stop all running containers, you can simply use **docker stop.**
 
 To remove specific container
 ```bash
-docker rm <CONTAINER NAME OR ID>
+docker rm app-container
 ```
 
 To remove specific image
 ```bash
-docker rmi <DOCKER IMAGE NAME OR ID>
+docker rmi backend-app:latest
 ```
 
-## Run aplication in docker-composer
-To run the application using Docker, open the **docker-compose.yml** file and modify the variables. Add the name of the **Docker image** you created along with its version. Additionally, include the same *MongoDB Atlas connection URL** from your **.env file** in the environment section.
+## Run aplication in Cloud with docker-composer
+**Note:** Must have knowledge of creating cloud environments.
+
+To run the application using Docker in Cloud, create and open the **docker-compose.yml** in environment, copy this example file and modify the variables. Add the name of the **Docker image** you created along with its version. Additionally, include the same **MongoDB Atlas connection URL** from your **.env file** in the environment section.
 
 ```bash
 
@@ -98,14 +105,14 @@ version: '3'
 services:
   app:
     container_name: simple-api
-    image: <DOCKER IMAGE NAME>:VERSION
+    image: backend-app:latest
     ports:
       - '5000:5000'
     environment:
-      DATABASE_URL: 'mongodb://USERNAME:PASSWORD@HOST/DATABASE'
-
-
+      DATABASE_URL: 'mongodb+srv://USERNAME:PASSWORD@HOST/DATABASE'
 ```
+
+**Note:** During the build process using github actions, the environment variable is not copied into the container during the process, so in docker-compose the value of the environment variable is passed.
 
 After doing this, run the following command to bring up the container. Make sure everything is done according to the step-by-step before proceeding.
 

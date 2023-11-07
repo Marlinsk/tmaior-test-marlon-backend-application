@@ -5,4 +5,5 @@
 ### Added
 
 - [x] integration with mongo db
+- [x] github actions workflow
 - [x] new documentation to README.md
