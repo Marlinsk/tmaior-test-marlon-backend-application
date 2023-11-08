@@ -62,13 +62,24 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build the Docker image
-        run: docker build -t marlonrodris/node-simple-backend-application:1.1.0 .
-
-      - name: Tag Docker image 
-        run: docker tag marlonrodris/node-simple-backend-application:1.1.0 marlonrodris/node-simple-backend-application:latest
-      
-      - name: Push the Docker image
-        run: docker push marlonrodris/node-simple-backend-application:1.1.0 
+        run: docker build -t marlonrodris/node-simple-backend-application:latest .
 
       - name: Push the latest version of the Docker image to Docker Hub
         run: docker push marlonrodris/node-simple-backend-application:latest
+
+  delivery:
+    needs: deploy-production
+    if: github.ref == 'refs/heads/main'
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Stop the containers
+        run: sudo docker compose stop
+
+      - name: Delete Old docker container
+        run: sudo docker compose down
+
+      - name: Run Docker Container
+        run: sudo docker compose up -d
+
