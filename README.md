@@ -200,3 +200,8 @@ Update post by specified ID
 Remove post by specified ID
 
 > /posts/:id
+
+## See also the front end application
+This application is divided into two parts back end and front end, to access the front end repository, the link below takes you to the front end application repository.
+
+**Link:** https://github.com/Marlinsk/tmaior-test-marlon-frontend-application
